@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Vaadin-Package-Version: 1
+Vaadin-Addon: ${project.build.finalName}.${project.packaging}
+Implementation-Vendor: Sven Ruppert
+Implementation-Title: ID Generator for Flow
+Implementation-Version: ${project.version}
