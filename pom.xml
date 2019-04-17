@@ -29,7 +29,7 @@
   <groupId>org.rapidpm.vaadin</groupId>
   <artifactId>id-generator-for-flow</artifactId>
   <name>ID Generator for Flow</name>
-  <version>00.08.00-RPM</version>
+  <version>00.08.01-RPM-SNAPSHOT</version>
 
   <packaging>pom</packaging>
 
