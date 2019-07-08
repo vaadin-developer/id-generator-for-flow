@@ -13,6 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+/*
+  Copyright © 2018 Sven Ruppert (sven.ruppert@gmail.com)
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+ */
 package org.rapidpm.vaadin.addon.idgenerator;
 
 import java.util.Locale;
@@ -52,8 +67,15 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.component.timepicker.TimePicker;
 import com.vaadin.flow.component.upload.Upload;
 
+/**
+ * The basic interface for the ID Generator
+ */
 public interface VaadinIDGenerator {
 
+  /**
+   * Will give you a generic ID Generator
+   * @return a TriFunction
+   */
   static TriFunction<Class, Class, String, String> genericID() {
     return (uiClass , componentClass , label)
         -> (uiClass.getSimpleName()
@@ -62,6 +84,10 @@ public interface VaadinIDGenerator {
         .toLowerCase(Locale.US);
   }
 
+  /**
+   *
+   * @return a reduced version of the genericID Function
+   */
   static Function<Class, BiFunction<Class, String, String>> typedComponentIDGenerator() {
     return (clazz) -> (uiClass , label) -> genericID().apply(uiClass , clazz , label);
   }
@@ -151,6 +177,7 @@ public interface VaadinIDGenerator {
   static BiFunction<Class, String, String> radioBtnGrpID() {
     return typedComponentIDGenerator().apply(RadioButtonGroup.class);
   }
+
   static BiFunction<Class, String, String> tabID() {
     return typedComponentIDGenerator().apply(Tab.class);
   }
