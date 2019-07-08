@@ -23,15 +23,16 @@
   <parent>
     <groupId>org.rapidpm</groupId>
     <artifactId>rapidpm-dependencies</artifactId>
-    <version>04.00.16-RPM</version>
+    <version>04.01.03-RPM</version>
   </parent>
 
   <groupId>org.rapidpm.vaadin</groupId>
   <artifactId>id-generator-for-flow</artifactId>
-  <name>ID Generator for Flow</name>
-  <version>00.08.01-RPM-SNAPSHOT</version>
+  <version>00.09.00-RPM</version>
 
-  <packaging>pom</packaging>
+  <packaging>jar</packaging>
+
+  <name>ID Generator for Flow</name>
 
   <inceptionYear>2018</inceptionYear>
   <organization>
@@ -75,31 +76,72 @@
     </license>
   </licenses>
 
-  <modules>
-    <module>id-generator-impl</module>
-    <module>id-generator-test</module>
-  </modules>
-
   <properties>
-    <!--technical-->
-    <!--<maven.compiler.release>10</maven.compiler.release>-->
-    <maven.compiler.target>8</maven.compiler.target>
-    <maven.compiler.source>8</maven.compiler.source>
-
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-    <vaadin.version>13.0.3</vaadin.version>
-    <meecrowave.version>1.2.7</meecrowave.version>
+    <jdk.version>8</jdk.version>
+    <!--technical-->
+    <!--<maven.compiler.release>${jdk.version}</maven.compiler.release> &lt;!&ndash;release makes source and target&ndash;&gt;-->
+    <maven.compiler.source>${jdk.version}</maven.compiler.source> <!--redundant, but IntelliJ doesn't-->
+    <maven.compiler.target>${jdk.version}</maven.compiler.target> <!--use release when importing-->
+
+    <!--    <maven.compiler.testRelease>${jdk.version}</maven.compiler.testRelease>-->
+    <maven.compiler.testSource>${jdk.version}</maven.compiler.testSource>
+    <maven.compiler.testTarget>${jdk.version}</maven.compiler.testTarget>
+
+    <!--Kotlin-->
+    <kotlin.compiler.jvmTarget>${jdk.version}</kotlin.compiler.jvmTarget>
+    <kotlin.version>1.3.41</kotlin.version>
+    <kotlin.compiler.incremental>true</kotlin.compiler.incremental>
+
+    <!--external-->
+    <vaadin.productionMode>true</vaadin.productionMode>
+    <vaadin.version>14.0.0.rc3</vaadin.version>
+    <undertow.version>2.0.21.Final</undertow.version>
+    <activateNodeJS_NPM>true</activateNodeJS_NPM>
+    <frontend-maven-plugin.nodeVersion>v10.16.0</frontend-maven-plugin.nodeVersion>
+    <frontend-maven-plugin.npmVersion>6.9.0</frontend-maven-plugin.npmVersion>
+
+    <!--Properties for Vaadin Directory-->
+    <Vaadin-Package-Version>1</Vaadin-Package-Version>
+    <Vaadin-Addon>${project.build.finalName}.${project.packaging}</Vaadin-Addon>
+
   </properties>
 
   <repositories>
+    <!-- Repository used by many Vaadin add-ons -->
     <repository>
-      <id>vaadin-addons</id>
+      <id>Vaadin Directory</id>
       <url>http://maven.vaadin.com/vaadin-addons</url>
-      <!--<url>http://maven.vaadin.com/</url>-->
+    </repository>
+    <!-- Repository needed for prerelease versions of Vaadin -->
+    <repository>
+      <id>Vaadin - Prereleases</id>
+      <url>https://maven.vaadin.com/vaadin-prereleases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
     </repository>
   </repositories>
+
+  <pluginRepositories>
+    <pluginRepository>
+      <id>central</id>
+      <url>https://repo1.maven.org/maven2/</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+    <!-- Repository needed for prerelease versions of Vaadin -->
+    <pluginRepository>
+      <id>Vaadin - Prereleases</id>
+      <url>https://maven.vaadin.com/vaadin-prereleases</url>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </pluginRepository>
+  </pluginRepositories>
 
 
   <dependencyManagement>
@@ -112,69 +154,85 @@
         <type>pom</type>
         <scope>import</scope>
       </dependency>
-      <!--Infrastructure-->
-      <dependency>
-        <groupId>org.apache.meecrowave</groupId>
-        <artifactId>meecrowave-core</artifactId>
-        <version>${meecrowave.version}</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.apache.meecrowave</groupId>
-        <artifactId>meecrowave-specs-api</artifactId>
-        <version>${meecrowave.version}</version>
-        <scope>test</scope>
-      </dependency>
     </dependencies>
   </dependencyManagement>
 
   <build>
-    <pluginManagement>
-      <plugins>
-
-      </plugins>
-    </pluginManagement>
-
+    <finalName>id-generator-for-flow</finalName>
     <plugins>
+      <!--For Vaadin Directory deployment-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
+        <artifactId>maven-jar-plugin</artifactId>
         <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <archive>
+            <index>true</index>
+            <manifest>
+              <addClasspath>false</addClasspath>
+              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+            </manifest>
+            <manifestEntries>
+              <Vaadin-Package-Version>${Vaadin-Package-Version}</Vaadin-Package-Version>
+            </manifestEntries>
+          </archive>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <configuration>
+          <appendAssemblyId>false</appendAssemblyId>
+          <descriptors>
+            <descriptor>assembly/assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>install</phase>
+          </execution>
+        </executions>
+      </plugin>
+
     </plugins>
   </build>
 
   <dependencies>
-    <dependency>
-      <groupId>javax.servlet</groupId>
-      <artifactId>javax.servlet-api</artifactId>
-      <version>4.0.1</version>
-      <scope>provided</scope>
-    </dependency>
-
     <!--Vaadin -->
     <dependency>
       <groupId>com.vaadin</groupId>
+      <!-- Replace artifactId with vaadin-core to use only free components -->
       <artifactId>vaadin</artifactId>
-    </dependency>
-
-    <dependency>
-      <groupId>com.vaadin</groupId>
-      <artifactId>vaadin-lumo-theme</artifactId>
-    </dependency>
-
-    <!--TDD-->
-    <dependency>
-      <groupId>org.apache.meecrowave</groupId>
-      <artifactId>meecrowave-core</artifactId>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.apache.meecrowave</groupId>
-      <artifactId>meecrowave-specs-api</artifactId>
-      <scope>test</scope>
+      <exclusions>
+        <!-- Webjars are only needed when running in Vaadin 13 compatibility mode -->
+        <exclusion>
+          <groupId>com.vaadin.webjar</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.insites</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.polymer</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.polymerelements</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.vaadin</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.webjars.bowergithub.webcomponents</groupId>
+          <artifactId>*</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
   </dependencies>
 </project>

@@ -2,10 +2,9 @@
 [![](https://jitpack.io/v/vaadin-developer/id-generator-for-flow.svg)](https://jitpack.io/#vaadin-developer/id-generator-for-flow)
 [![](https://jitci.com/gh/vaadin-developer/id-generator-for-flow/svg)](https://jitci.com/gh/vaadin-developer/id-generator-for-flow)
 
-
-If IDs for components are needed in a project, it makes sense to use an ID generator. 
-With this, you get in a project ID's that are always built according to the same scheme.
-Relevant here is that these numbers are kept in human-readable form. 
+If IDs for components needed in a project, it makes sense to use an ID generator. 
+With this, you get in a project ID's that always built according to the same scheme.
+Relevant here is that these numbers kept in human-readable form. 
 This strategy facilitates the assignment of log messages to the particular source code point later during operation.
 
 Another requirement is the uniqueness of identification numbers. 
