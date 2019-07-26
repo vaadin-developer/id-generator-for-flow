@@ -18,7 +18,7 @@ version: '3.5'
 
 services:
   deploy:
-    image: working/vaadin-id-generator-for-flow:latest
+    image: svenruppert/maven-3.6.1-adopt:1.8.212-04
     container_name: deploy
     hostname: deploy
     volumes:
@@ -30,5 +30,4 @@ services:
     #    command: 'mvn help:active-profiles
     command: 'mvn license:format clean deploy
                     -P_release
-                    -Dmaven.test.skip=true
-                    -DactivateNodeJS_NPM=true '
+                    -Dmaven.test.skip=true'
