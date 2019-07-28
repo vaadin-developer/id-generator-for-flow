@@ -28,7 +28,7 @@
 
   <groupId>org.rapidpm.vaadin</groupId>
   <artifactId>id-generator-for-flow</artifactId>
-  <version>00.09.02-RPM-SNAPSHOT</version>
+  <version>00.09.02-RPM</version>
 
   <packaging>jar</packaging>
 
@@ -100,23 +100,23 @@
   <build>
     <finalName>id-generator-for-flow</finalName>
     <plugins>
-      <!--For Vaadin Directory deployment-->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <configuration>
-          <archive>
-            <index>true</index>
-            <manifest>
-              <addClasspath>false</addClasspath>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-            </manifest>
-            <manifestEntries>
-              <Vaadin-Package-Version>${Vaadin-Package-Version}</Vaadin-Package-Version>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
+<!--      &lt;!&ndash;For Vaadin Directory deployment&ndash;&gt;-->
+<!--      <plugin>-->
+<!--        <groupId>org.apache.maven.plugins</groupId>-->
+<!--        <artifactId>maven-jar-plugin</artifactId>-->
+<!--        <configuration>-->
+<!--          <archive>-->
+<!--            <index>true</index>-->
+<!--            <manifest>-->
+<!--              <addClasspath>false</addClasspath>-->
+<!--              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>-->
+<!--            </manifest>-->
+<!--            <manifestEntries>-->
+<!--              <Vaadin-Package-Version>${Vaadin-Package-Version}</Vaadin-Package-Version>-->
+<!--            </manifestEntries>-->
+<!--          </archive>-->
+<!--        </configuration>-->
+<!--      </plugin>-->
     </plugins>
   </build>
 </project>
