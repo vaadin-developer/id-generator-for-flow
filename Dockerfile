@@ -15,14 +15,14 @@
 #
 
 #FROM svenruppert/maven-3.6.1-openjdk:1.11.0-2
-FROM svenruppert/maven-3.6.1-adopt:1.8.212-04
+FROM svenruppert/maven-3.6.2-adopt:1.8.212-04
 MAINTAINER sven.ruppert@gmail.com
 
 ARG USER_HOME_DIR="/root"
 
-#RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
+RUN curl -sL https://deb.nodesource.com/setup_12.x | bash - \
 #RUN curl -sL https://deb.nodesource.com/setup_11.x | bash - \
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
+#RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
     && apt-get install -y nodejs
 
 WORKDIR /build
