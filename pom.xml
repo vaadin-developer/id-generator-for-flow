@@ -22,13 +22,13 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.rapidpm</groupId>
-    <artifactId>rapidpm-vaadin-dependencies-vXX</artifactId>
-    <version>04.01.15-RPM</version>
+    <artifactId>rapidpm-vaadin-dependencies-v14</artifactId>
+    <version>04.05.02-RPM</version>
   </parent>
 
   <groupId>org.rapidpm.vaadin</groupId>
   <artifactId>id-generator-for-flow</artifactId>
-  <version>00.09.03-RPM</version>
+  <version>00.09.04-RPM</version>
 
   <packaging>jar</packaging>
 
@@ -78,22 +78,7 @@
 
   <properties>
     <jdk.version>1.8</jdk.version>
-    <Vaadin-Package-Version>1</Vaadin-Package-Version>
-    <Vaadin-Addon>${project.build.finalName}.${project.packaging}</Vaadin-Addon>
   </properties>
-
-  <dependencyManagement>
-    <dependencies>
-      <!--Vaadin -->
-<!--      <dependency>-->
-<!--        <groupId>com.vaadin</groupId>-->
-<!--        <artifactId>vaadin-bom</artifactId>-->
-<!--        <version>${vaadin-v14.version}</version>-->
-<!--        <type>pom</type>-->
-<!--        <scope>import</scope>-->
-<!--      </dependency>-->
-    </dependencies>
-  </dependencyManagement>
 
   <dependencies>
     <dependency>

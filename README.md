@@ -1,10 +1,8 @@
 # IDGenerator for Flow
-[![](https://jitpack.io/v/vaadin-developer/id-generator-for-flow.svg)](https://jitpack.io/#vaadin-developer/id-generator-for-flow)
-[![](https://jitci.com/gh/vaadin-developer/id-generator-for-flow/svg)](https://jitci.com/gh/vaadin-developer/id-generator-for-flow)
 
 ## No Vaadin Directory anymore
 **This AddOn is no longer available in the Vaadin Directory**
-The deployment process is way to manuall. So I decided to use maven central and JitPack only.
+The deployment process is way to manually. So I decided to use maven central only.
 
 ## Why this IDGenerator?
 If IDs for components needed in a project, it makes sense to use an ID generator. 
