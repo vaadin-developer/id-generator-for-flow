@@ -23,7 +23,7 @@ docker run \
        --name run \
        -v "$(pwd)":/usr/src/mymaven \
        -w /usr/src/mymaven \
-       working/vaadin-id-generator-for-flow:latest \
+       svenruppert/adopt:1.8.212-04:latest \
        java -jar target/vaadin-app.jar
 
 #docker run -it \

@@ -19,8 +19,8 @@ version: '3.5'
 services:
   deploy-vaadin-id-generator:
     image: svenruppert/deploy:1.8.0-222
-    container_name: deploy-vaadin-id-generator
-    hostname: deploy-vaadin-id-generator
+    container_name: deploy-id-generator-for-flow
+    hostname: deploy-id-generator-for-flow
     volumes:
       - /var/run/docker.sock:/tmp/docker.sock:ro
       - $PWD/:/usr/src/mymaven

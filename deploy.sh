@@ -15,5 +15,5 @@
 # limitations under the License.
 #
 
-docker rm deploy-vaadin-id-generator
+docker rm deploy-id-generator-for-flow
 docker-compose up
