@@ -22,7 +22,7 @@
   <parent>
     <artifactId>id-generator-for-flow-parent</artifactId>
     <groupId>org.rapidpm.vaadin</groupId>
-    <version>00.09.05-RPM-SNAPSHOT</version>
+    <version>00.10.00-alpha</version>
   </parent>
   <modelVersion>4.0.0</modelVersion>
 
