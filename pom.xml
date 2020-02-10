@@ -39,15 +39,15 @@
     <name>Sven Ruppert</name>
     <url>https://github.com/svenruppert</url>
   </organization>
-  <url>https://github.com/vaadin-developer/id-generator</url>
+  <url>https://github.com/vaadin-developer/id-generator-for-flow</url>
 
   <scm>
-    <url>https://github.com/vaadin-developer/id-generator</url>
+    <url>https://github.com/vaadin-developer/id-generator-for-flow</url>
     <connection>
-      scm:git:https://github.com/vaadin-developer/id-generator.git
+      scm:git:https://github.com/vaadin-developer/id-generator-for-flow.git
     </connection>
     <developerConnection>
-      scm:git:https://github.com/vaadin-developer/id-generator.git
+      scm:git:https://github.com/vaadin-developer/id-generator-for-flow.git
     </developerConnection>
     <tag>HEAD</tag>
   </scm>
@@ -64,7 +64,7 @@
   <issueManagement>
     <system>Github</system>
     <url>
-      https://github.com/vaadin-developer/id-generator/issues
+      https://github.com/vaadin-developer/id-generator-for-flow/issues
     </url>
   </issueManagement>
   <licenses>
