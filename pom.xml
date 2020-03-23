@@ -30,7 +30,7 @@
 
   <groupId>org.rapidpm.vaadin</groupId>
   <artifactId>id-generator-for-flow-parent</artifactId>
-  <version>00.10.00-alpha</version>
+  <version>00.10.01</version>
 
   <packaging>pom</packaging>
 
