@@ -133,7 +133,7 @@
       <dependency>
         <groupId>org.rapidpm.vaadin</groupId>
         <artifactId>id-generator-for-flow</artifactId>
-        <version>00.10.01-67</version>
+        <version>00.10.01-69</version>
       </dependency>
       <dependency>
         <groupId>org.rapidpm.vaadin</groupId>
